@@ -23,10 +23,15 @@ font-family: 'Play', sans-serif;	margin-right: auto;
 /* Add a black background color to the top navigation */
 .topnav {
     overflow: hidden;
+
+}
+
+.topnav .left {
+	position: absolute;
 }
 
 /* Style the links inside the navigation bar */
-.topnav a {
+.topnav .left a {
     float: left;
     color: #ff9000;
     text-align: center;
@@ -36,13 +41,60 @@ font-family: 'Play', sans-serif;	margin-right: auto;
     font-family: 'Economica', sans-serif;
 }
 
+.topnav .right {
+	float: right;
+}
+
+.topnav .right a {
+	float: right;
+}
+
 /* Change the color of links on hover */
-.topnav a:hover {
+.topnav .left a:hover {
     background-color: #160944;
     color: #ff9000;
+}
+
+.topnav .right a:hover {
+	color: #ff9000;
 }
 
 .maintext {
     text-align: center;
     color: #ff9000;
+}
+
+/* Style all font awesome icons */
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 18px;
+    text-align: center;
+    text-decoration: none;
+	margin: 4px;
+    border-radius: 50%;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+    /*opacity: 0.7;*/
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.fa-reddit {
+  background: #ff5700;
+  color: white;
 }
