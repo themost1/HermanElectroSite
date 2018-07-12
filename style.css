@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Economica|Electrolize|Jura|Kanit|Play|Sorts+Mill+Goudy|Ubuntu+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Finger+Paint|Economica|Glegoo|Electrolize|Jura|Kanit|Play|Sorts+Mill+Goudy|Ubuntu+Condensed');
 
 body {
 	background-color: black;
@@ -37,8 +37,9 @@ font-family: 'Play', sans-serif;	margin-right: auto;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 31px;
     font-family: 'Economica', sans-serif;
+	letter-spacing: 2px;
 }
 
 .topnav .right {
@@ -67,12 +68,19 @@ font-family: 'Play', sans-serif;	margin-right: auto;
 /* Style all font awesome icons */
 .fa {
     padding: 20px;
-    font-size: 30px;
-    width: 18px;
+    width: 16px;
+	height: 16px;
     text-align: center;
     text-decoration: none;
 	margin: 6px;
-    border-radius: 50%;
+    border-radius: 30%;
+}
+
+.fa:before {
+	font-size: 22px;
+	display: inline;
+
+
 }
 
 /* Add a hover effect if you want */
@@ -97,4 +105,16 @@ font-family: 'Play', sans-serif;	margin-right: auto;
 .fa-reddit {
   background: #ff5700;
   color: white;
+}
+
+img.mushroom {
+  position: relative;
+  top: 10px;
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+img.mushroom:hover {
+	background: #ff5700; 
 }
