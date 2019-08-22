@@ -1,0 +1,99 @@
+<html>
+
+<script src="index.js"></script>
+
+<head>
+<title>	Herman Electro </title>
+<link href="blogpost.css" type="text/css" rel="stylesheet">
+<link rel="icon" href="images/icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<div class="topnav">
+
+  <div class="topnav right">
+    <a href="https://www.reddit.com/r/HermanElectro/" class="fa fa-reddit fa-5x"a>
+  	<a href="https://twitter.com/HermanElectro" class="fa fa-twitter fa-2x"></a>
+    <a href="https://www.facebook.com/Herman-Electro-213679162478806/" class="fa fa-facebook fa-3x"></a>
+	<img id="mushroom" class="mushroom" src="images/mushroom.png">
+  </div>
+  
+  <div class="topnav left">
+	  <a class="active" href="index.html">Home</a>
+	  <a class="active" href="index.html">Posts</a>
+	  <a href = "index.html">Download (Coming Soon)</a>
+	  <a href="#contact">Contact</a>
+  </div>
+</div>
+
+<br/><br/><br/>
+
+<body>
+
+<p>INTRODUCING HERMAN ELECTRO: Designing Puzzles for Replayability, Part 1</p>
+
+<p> Is it possible to design replayable puzzles?</p>
+
+<p>When the four regular members of my computer science club in high school started working on Herman Electro, we didn&rsquo;t think much about that question. But it&rsquo;s a topic that deserves attention for a few reasons. Reason number one: it&rsquo;s not clear whether such a design is possible or not, since puzzles are usually built around a single technique or solution that, once discovered, is known to the player. Reason number two: this question is core to the design of Herman Electro, and as the game&rsquo;s development continued, many important design decisions were based on the concept of replayability. Reason number three: if we can make replayable puzzles for Herman Electro, is it possible to build other games around the same idea?</p>
+
+<p>Herman Electro consists of six floors of electricity-themed puzzles. Armed with a selection of &ldquo;basic tools,&rdquo; high-powered &ldquo;supertools,&rdquo; and unique character abilities, the player is challenged to complete puzzles and reach the end of the sixth floor, unlocking new characters and tools along the way. Winning the game requires reaching the endgame as each character and discovering the secret content hidden in the Herman Electro universe.</p>
+
+<p>Those six floors of puzzles are randomly generated at every playthrough, so the game never looks or feels the same. But since puzzles are selected from a fixed total pool of around 500 puzzles, some puzzles will be seen multiple times. It is crucial to the health of the game that, when a puzzle is seen for the second or third time, it is still engaging and doesn&rsquo;t just serve as filler content.</p>
+
+<p>This design post is the first in our new weekly column on the design and development of Herman Electro. In the years we&rsquo;ve spent working on the game, we&rsquo;ve learned a lot about game design and teamwork, and we have a lot of stories we think people would enjoy.</p>
+
+<p>Here are some of the ways in which we&rsquo;ve designed Herman Electro&rsquo;s puzzles to be played again and again (note that, since this is a large topic, future posts will likely touch on other aspects of replayable puzzle design):</p>
+
+<p>Multiple solutions exist (but not too many) Multiplayer games are usually restricted to only a handful of maps and locations. For example, players of first-person shooters play on the same maps again and again; for players of the popular MOBA League of Legends, the most play takes place on a single map, Summoner&rsquo;s Rift.</p>
+
+<p>These games provide huge replayability despite the limited settings and maps they provide; they are able to do so because, even when playing in the same environment, the player interacts with that environment dynamically, and the optimal strategy changes every game.</p>
+
+<p>The dynamism of multiplayer games comes inherently from the other players in the game. In Herman Electro, we had to come up with other methods of creating replayability. One method is designing puzzles that have more than one solution; that way, even when you come across the same puzzle twice, you won&rsquo;t play it the same way, much like how a single map in a first-person shooter can allow for a variety of strategies and playstyles.</p>
+
+<p>For example, here&rsquo;s the original version of a Herman Electro puzzle:</p>
+
+<p>While the puzzle is aesthetically pleasing and interesting to a beginner, it&rsquo;s pretty boring once you&rsquo;ve seen it already. So I modified it a bit:</p>
+
+<p>Now the puzzle has two solutions, and it&rsquo;s a lot more interesting for experienced players while still approachable for beginners.</p>
+
+<p>However, more solutions don&rsquo;t necessarily add more replayability. Imagine a first-person shooter with an extremely complex map, filled with side-quests and engaging content. There are a couple problems with such a map: it is very difficult to balance strategies, and players might feel overwhelmed by the amount of content and gravitate towards the simpler strategies that are still powerful.</p>
+
+<p>Similarly, a Herman Electro puzzle with dozens of solutions probably has a few solutions that are fairly obvious or similar to one another, and players will be more likely to have the resources necessary to use one of these solutions. They will then miss out on all the other solutions, and the puzzle will become less replayable, not more.</p>
+
+<p>It&rsquo;s hard to quantify the ideal number of solutions, and it differs from puzzle to puzzle, but generally the most interesting puzzles have somewhere between two and four solutions.</p>
+
+<p>2. The same solutions aren&rsquo;t always available Let&rsquo;s go back to our comparison with multiplayer games. Say we have a fun, engaging multiplayer game with a variety of unique strategies. Sounds pretty good so far.</p>
+
+<p>But what if all of those strategies are available and have the same power level for every game, no matter what the opposing team does? In that case, a powerful strategy -- for example, dividing the team in half, with each half going to one end of the map -- is always going to be available. There&rsquo;s no reason to use any other strategy to adapt to the opponent, because having the team separate into halves is going to work every time, and learning another strategy is a waste of time.</p>
+
+<p>Similar logic applies to Herman Electro. Puzzles are more fun if they have multiple solutions, but if every solution is available for every puzzle at all times, the puzzles might as well just have a single solution, since players would never need to learn any others.</p>
+
+<p>Limiting the player&rsquo;s resources is crucial for a number of reasons. It sustains a feeling of intensity throughout the game, and it adds a layer of strategic inventory manipulation. It also means that, while a solution for at least one available puzzle will be provided when necessary, the player won&rsquo;t always be able to repeat a solution they used previously.</p>
+
+<p>Restricting the player&rsquo;s options in each puzzle encourages the player to adapt, either by learning new solutions, trying to beat other puzzles in hopes of getting the basic tools for a known solution, or relying on character abilities and supertools.</p>
+
+<p>Restriction also gives the player a reason to seek optimal solutions rather than wasting tools. After all, a single saw might be the difference between achieving your dreams and dying in a pit.</p>
+
+<p>3. New puzzles are introduced over time Early on in Herman Electro development, the game had a lengthy tutorial that briefly touched on every tile, animal, and basic tool in the game. It was complicated, frustrating, and a colossal design failure.</p>
+
+<p>A lot has changed since then, and the game now introduces content much more slowly, with new players only interacting with the game&rsquo;s foundational tiles and tools. One result of this change is that, as new tiles are unlocked over time, new puzzles that include those tiles are unlocked over time as well.</p>
+
+<p>The introduction of new puzzles over time isn&rsquo;t just good for teaching new concepts; it&rsquo;s also good for replayability.</p>
+
+<p>If players were exposed to every puzzle in the game from the beginning, they would learn all of the puzzles at roughly the same rate, and their experience would gradually shift from playing all-new puzzles to playing exclusively puzzles they have already seen before.</p>
+
+<p>With a slow release of puzzles over time, players become familiar with some of the puzzles, but they are also constantly facing puzzles they haven&rsquo;t seen before. These new puzzles maintain a consistent level of challenge and freshness. The overall puzzle set feels much richer with some puzzles known and others unknown, since known solutions can be leveraged to get the right tool set to beat the unknown puzzles.</p>
+
+<p>On an emotional level, a playthrough of Herman Electro feels more interesting with a combination of known and unknown puzzles as well. The familiar puzzles are comforting, even if the player doesn&rsquo;t have any known solutions; the unfamiliar puzzles require more active engagement and ensure that even an experienced player needs to strategize and adapt to new situations.</p>
+
+<p> Herman Electro is a unique game for a number of reasons, not least of which is the replayability of its puzzles. I&rsquo;m curious if other games could take a similar approach to puzzle replayability using the concepts discussed above. In a world where multiplayer games are gaining more and more traction, and the number of hours a game lasts is often valued just as much as the actual fun one has during those hours, puzzle replayability will likely only become more important.</p>
+
+<p>Thanks for reading this first post of our weekly column. We have a lot more to discuss about game design, Herman Electro, and what they mean to us. See you next week.</p>
+
+<p>_________</p>
+
+<p>If you have any questions or comments, feel free to email us at hermanelectrogame@gmail.com. You can follow our progress and see more posts and gifs on our Twitter account, @HermanElectro. </p>
+
+
+</body>
+</html>
