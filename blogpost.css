@@ -2,7 +2,15 @@
 
 body {
 	background-color: rgb(30, 30, 30);
-	color: white;
+	color: rgb(120, 120, 120);
+}
+
+p {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-right: 150px;
+	margin-left: 80px;
+	font-size: 24;
 }
 
 img.banner {
@@ -17,13 +25,19 @@ img.banner {
 .trailer {
 	display: block;
 	margin-left: auto;
-font-family: 'Play', sans-serif;	margin-right: auto;
+	font-family: 'Play', sans-serif;	margin-right: auto;
 }
 
 /* Add a black background color to the top navigation */
 .topnav {
     overflow: hidden;
 
+}
+
+.center-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .topnav .left {
