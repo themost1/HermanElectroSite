@@ -36,24 +36,32 @@
 <p><center>By Benjamin Most</p></center>
 </h2>
 
+<p>I don&rsquo;t usually like to do the same thing twice.</p>
 
+<p>I don&rsquo;t reread books or rewatch TV series. At restaurants, I always try new dishes over old favorites. The few times I have been forced to watch the same film twice, I&rsquo;ve struggled to pay attention during the second time.</p>
 
-<p> Is it possible to design replayable puzzles?</p>
+<p>That&rsquo;s what makes my love of the roguelike genre so surprising.</p>
 
-<p>When the four regular members of my computer science club in high school started working on <b>Herman Electro</b>, we didn&rsquo;t think much about that question. But it&rsquo;s a topic that deserves attention for a few reasons. Reason number one: it&rsquo;s not clear whether such a design is possible, since puzzles are usually built around a single technique or solution that, once discovered, is known to the player. Reason number two: this question is core to the design of <b>Herman Electro</b>, and as the game&rsquo;s development continued, many important design decisions were based on the concept of replayability. Reason number three: if we can make replayable puzzles for <b>Herman Electro</b>, is it possible to build other games around the same idea?</p>
+<p>An indie hit called <i>The Binding of Isaac</i> is what made me fall in love with roguelike games, a genre of games centered around the idea that death forces the player to restart the entire game. This type of gameplay only works if the game is designed around being played again and again, usually seeing the same content repeated in different contexts.</p>
 
-<p><b>Herman Electro</b> consists of six floors of electricity-themed puzzles. Armed with a selection of &ldquo;basic tools,&rdquo; high-powered &ldquo;supertools,&rdquo; and unique character abilities, the player is challenged to complete puzzles and reach the end of the sixth floor, unlocking new characters and tools along the way. Winning the game requires reaching the endgame as each character and discovering the secret content hidden in the <b>Herman Electro</b> universe.</p>
+<p>I first played <i>The Binding of Isaac</i> at my friend&rsquo;s house. We took turns playing, switching every few minutes while struggling to progress past the earliest stages of the game. As soon as I got home, I purchased the game to play on my own. At first, my goal was merely to beat the game a single time. But afterI won, something important happened: I played again. And again, and again, and again.</p>
+
+<p>There&rsquo;s something magical about a game that can be played time and time again, as the player slowly gains mastery and discovers secrets. The ability to make familiar content feel fresh and unique at every playthrough is one that few games have, but it&rsquo;s deeply powerful.</p>
+
+<p>Years later, I found myself sitting with three friends in my high school computer science club, discussing ideas for a puzzle roguelike game. That game would go on to become <b>Herman Electro</b>. We all loved <i>The Binding of Isaac</i> and were inspired by it, but <b>Herman Electro</b> posed some unique challenges. It&rsquo;s easy to design the core gameplay loop of fighting enemies and collecting combat-enhancing items around replayability. Designing replayable puzzles is a lot more difficult.</p>
 
 <img class="center-img" id="chart" src="../images/title_room.gif" height=500 width=825>
 
-<p>Those six floors of puzzles are randomly generated at every playthrough, so the game never looks or feels the same. But since puzzles are selected from a fixed total pool of around 500 puzzles, some puzzles will be seen multiple times. It is crucial to the health of the game that, when a puzzle is seen for the second or third time, it is still engaging and doesn&rsquo;t just serve as filler content.</p>
+<p>Today, <b>Herman Electro</b> consists of six floors of electricity-themed puzzles, randomly selected from our pool of around 500 total puzzles. Armed with a selection of &ldquo;basic tools,&rdquo; high-powered &ldquo;supertools,&rdquo; and unique character abilities, the player is challenged to complete puzzles and reach the end of the sixth floor, unlocking new characters and tools along the way. Winning the game requires reaching the endgame as each character and discovering the secret content hidden in the <b>Herman Electro</b> universe.</p>
 
-<p>This design post is the first in our new weekly column about the design and development of <b>Herman Electro</b>. In the years we&rsquo;ve spent working on the game, we&rsquo;ve learned a lot about game design and teamwork, and we have a lot of stories we think people would enjoy.</p>
+<p>To make sure our puzzles are entertaining even when solved multiple times, my team came up with a few strategies. These strategies could likely apply not just to <b>Herman Electro</b> but to any game focusing on replayable puzzles (or replayability in general).</p>
 
-<p>Here are some of the ways in which we&rsquo;ve designed <b>Herman Electro</b>&rsquo;s puzzles to be played again and again (note that, since this is a large topic, future posts will likely touch on other aspects of replayable puzzle design):</p>
+<p>In this first post in our weekly column on game design and <b>Herman Electro</b>, I&rsquo;ll discuss the guiding principles we&rsquo;ve used to create replayable puzzles.</p>
 
 <br/><br/>
 <p><b>1. Multiple solutions exist (but not too many)</b></p>
+
+<p>When thinking about replayability, the first thing that comes to mind is multiplayer games.</p>
 
 <p>Multiplayer games are usually restricted to only a handful of maps and locations. For example, players of first-person shooters play on the same maps again and again; for players of the popular MOBA League of Legends, the most play takes place on a single map, Summoner&rsquo;s Rift.</p>
 
@@ -79,6 +87,8 @@
 
 <img class="center-img" id="chart" src="../images/replayability_chart.png" height=400 width=560>
 
+<p>There is one problem with using puzzles that have multiple solutions: why would the player not just use the same solution every time they see the puzzle, rather than spend the time and energy required to learn new solutions? That is where our second design principle comes in.</p>
+
 <br/><br/>
 <p><b>2. The same solutions aren&rsquo;t always available</b></p>
 
@@ -96,10 +106,12 @@
 
 <img class="center-img" id="chart" src="../images/dead_in_pit.gif" height=400 width=450>
 
+<p>Even with these two design principles, however, we noticed that puzzles would start to feel repetitive after a long period of play, and a craving for new puzzles would develop. So we came upon design principle number three.</p>
+
 <br/><br/>
 <p><b>3. New puzzles are introduced over time</b></p>
 
-<p> Early on in <b>Herman Electro</b> development, the game had a lengthy tutorial that briefly touched on every tile, animal, and basic tool in the game. It was complicated, frustrating, and a colossal design failure.</p>
+<p> Early on in <b>Herman Electro</b> development, the game had a lengthy tutorial that briefly touched on every tile, animal, and basic tool in the game. It was complicated, frustrating, and overall a design failure.</p>
 
 <img class="center-img" id="chart" src="../images/tut_doggo_door.gif" height=325 width=450>
 
@@ -113,7 +125,7 @@
 
 <p>On an emotional level, a playthrough of <b>Herman Electro</b> feels more interesting with a combination of known and unknown puzzles as well. The familiar puzzles are comforting, even if the player doesn&rsquo;t have any known solutions; the unfamiliar puzzles require more active engagement and ensure that even an experienced player needs to strategize and adapt to new situations.</p>
 
-<p> <b>Herman Electro</b> is a unique game for a number of reasons, not least of which is the replayability of its puzzles. I&rsquo;m curious if other games could take a similar approach to puzzle replayability using the concepts discussed above. In a world where multiplayer games are gaining more and more traction, and the number of hours a game lasts is often valued just as much as the actual fun one has during those hours, puzzle replayability will likely only become more important.</p>
+<p><b>Herman Electro</b> is a unique game for a number of reasons, not least of which is the replayability of its puzzles. By designing puzzles around replayability, I hope we&rsquo;ve been able to capture the kind of excitement and desire for mastery that roguelike games inspired in me eight years ago.</p>
 
 <p>Thanks for reading this first post of our weekly column. We have a lot more to discuss about game design, <b>Herman Electro</b>, and what they mean to us. See you next week.</p>
 
