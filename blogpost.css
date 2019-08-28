@@ -216,3 +216,13 @@ img.mushroom:hover {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* unvisited link */
+.link:link {
+  color: orange;
+}
+
+/* visited link */
+.link:visited {
+  color: blue;
+}
