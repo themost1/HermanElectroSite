@@ -28,16 +28,11 @@ img.banner {
 	font-family: 'Play', sans-serif;	margin-right: auto;
 }
 
+
 /* Add a black background color to the top navigation */
 .topnav {
     overflow: hidden;
 
-}
-
-.center-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .topnav .left {
@@ -63,6 +58,11 @@ img.banner {
 .topnav .right a {
 	float: right;
 }
+
+.topnav .right a {
+	float: right;
+}
+
 
 /* Change the color of links on hover */
 .topnav .left a:hover {
@@ -93,8 +93,6 @@ img.banner {
 .fa:before {
 	font-size: 22px;
 	display: inline;
-
-
 }
 
 /* Add a hover effect if you want */
@@ -142,3 +140,79 @@ img.mushroom:hover {
 }
 
 
+.topnav .left {
+  overflow: hidden;
+  background-color: transparent;
+  color: #ff9000;
+  letter-spacing: 2px;
+}
+
+.topnav .left a {
+  float: left;
+  font-size: 16px;
+  color: #ff9000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 31px;
+  font-family: 'Economica', sans-serif;
+  letter-spacing: 2px;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+	font-size: 16px;  
+	border: none;
+	outline: none;
+	color: #ff9000;
+	padding: 14px 16px;
+	background-color: inherit;
+	font-size: 31px;
+	font-family: 'Economica', sans-serif;
+	margin: 0;
+	letter-spacing: 2px;
+}
+
+.topnav .left a:hover, .dropdown:hover .dropbtn {
+  background-color: rgb(30, 0, 70);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(50, 50, 50);
+  color: orange;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  font-size: 31px;
+  letter-spacing: 2px;
+  color: orange;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-family: 'Economica', sans-serif;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.center-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
