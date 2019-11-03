@@ -1,0 +1,100 @@
+<html>
+
+
+<script src="../blogpost.js"></script>
+
+<head>
+<title>Herman Electro</title>
+<link href="../blogpost.css" type="text/css" rel="stylesheet">
+<link rel="icon" href="../images/icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<!-- uses stylesheet above, so needs to be called topnav -->
+<div class="topnav">
+	<span class="topnav right">
+		<a href="https://www.reddit.com/r/HermanElectro/" class="fa fa-reddit fa-5x"a>
+		<a href="https://twitter.com/HermanElectro" class="fa fa-twitter fa-2x"></a>
+		<a href="https://www.facebook.com/Herman-Electro-213679162478806/" class="fa fa-facebook fa-3x"></a>
+		<img id="mushroom" class="mushroom" src="../images/mushroom.png">
+	</span>
+	
+	<div class="dropdown">
+		<button class="dropbtn" onclick="window.location.href = '../index.html';">Home</button>
+	</div>
+
+	<div class="dropdown">
+		<button class="dropbtn" onclick="window.location.href = '../posts.html';">Posts 
+		<!-- <i class="fa fa-caret-down"></i> -->
+		</button>
+	
+		<!-- this is how dropdowns should be created
+		<div class="dropdown-content">
+		  <a href="#">All Posts</a>
+		  <a href="#">Latest Post</a>
+		</div>
+		-->
+	</div>
+
+	<div class="dropdown">
+		<button class="dropbtn" onclick="window.location.href = '../index.html';">Download (Coming Soon)</button>
+	</div>
+	
+	<div class="dropdown">
+		<button class="dropbtn" onclick="location.href = 'mailto:hermanelectro@gmail.com';">Contact</button>
+	</div>
+</div>
+
+<br/><br/><br/>
+
+<body>
+
+<h1><center>THE COUNTDOWN</center></h1>
+<h2>
+<center>Timers, Feedback, and the Failure of the Solution Mindset</center>
+<p><center>By Eli Goldin</p></center>
+</h2>
+
+<p>There's a classic game design lesson that states "always make the strongest strategy fun." In puzzle games, the strongest strategy is often to experiment until you notice a pattern and can solve the puzzle. In theory, this is not the case in <b>Herman Electro</b> as experimentation can be deadly. If you die in a puzzle, you go all the way back to the beginning. As designers, we realized that the strongest possible strategy in <b>Herman</b> must necessarily be to stand in front of a puzzle for an indefinite amount of time until you are 100% sure of the answer. This way, the player can guarantee that they will never die. Early on in design, this technique was deemed "unfun gameplay," and according to the maxim we needed to make it weaker. Thus, we added a timer.</p>
+
+<p>This is a video of <b>Herman</b> two years ago, back when the timer was still implemented.</p>
+
+<img class="center-img" id="chart" src="../images/timer/old_timer_death.gif" height=500 width=888>
+
+<p>See that tiny number in white on the top of the screen? That's the timer. In the old version of the game, when the timer reached 0, Herman would die. We deemed the timer a necessary evil. This, although somewhat inelegantly, forced players to actually try their solutions to the puzzles instead of standing still while guaranteeing that they had the correct solution.</p>
+
+<p>And then, we had people play the game. What follows is some samples of the feedback we got on the timer accompanied with our answers.</p>
+
+<p>"Why did I just die?"</p>
+<p><b>There's a timer at the top of the screen. In the next version we will make it more visible so this won't be an issue.</b></p>
+<p>"The game's cool, but the timer just feels dumb.</p>
+<p><b>It's a necessary evil. Without the timer, you would spend forever standing in the same room.</b></p>
+<p>"How am I supposed to beat the puzzle that fast?"</p>
+<p><b>You just stood in a room for 4 minutes straight. You are going to have to try solutions without 100% certainty of success if you want to win.</b></p>
+<p>"Wait there's a timer? I never noticed it."</p>
+<p><b>The timer isn't designed for people who play fast like you. </b></p>
+
+<p>It is clear in hindsight that the only purpose of these "answers" was to give an excuse for why we kept the timer in the game. It was bad design, and the players knew it. However, we were so set on sticking to this "design rule," that we refused to remove the timer at all.</p>
+
+<p>At some point, we decided to move the game's codebase over to a custom engine we wrote in C++ (more on that next week). Adding the timer into the ported version of <b>Herman</b> was relatively low on our priority list, and so it didn't get completed by the time of our first playtests. </p>
+
+<img class="center-img" id="chart" src="../images/timer/new_timer_room.gif" height=500 width=838>
+
+<p>As people played the game, something very strange happened. Most people did not stand in front of a single puzzle for an hour until they knew the solution perfectly. Instead, people played <b>Herman</b> as they would other puzzle games, with trial and error. Yes, there were a few people who spent a lot of time on puzzles they couldn't figure out. But the people who chose to do that counter-intuitively were some of the biggest fans of the game. Clearly the timer had not been necessary, and so we kept it removed.</p>
+
+<p>Why then, did we get so stuck up on keeping the timer? This is due to something I like to call the "solution mindset." The solution mindset of game design is a technique for fine-tuning a game. You look for problems with the game, and design solutions to fix those problems. Eventually, the game should have no problems. While this strategy can help clean up obvious issues with the game, it does not really make the game any more fun. It's not a terrible tool in the game design tool kit, but it should not be the be all end all.</p>
+
+<p>In this case, we identified a problem with the game according to design principles. Then, as we could only find one solution, the timer, we implemented it and stood by it despite negative feedback. We were so focused on solving this "issue" that we didn't realize that our solution was even worse. In this case, the best solution was no solution at all. Even though it wasn't super fun to have no action at all for a minute or two, stopping players from having the option to do that was more annoying than helpful. We only realized this due to circumstance, but it is a good lesson in general. Don't be so focused on finding a solution that you make your game worse. Fun is more important than "perfection."</p>
+
+<img class="center-img" id="chart" src="../images/timer/erika_timer.gif" height=500 width=838>
+
+<p>Now, I know I said that we removed the timer, but in truth it does still exist in some capacity. One challenge character, Erika, implements the timer in a very similar way to how it was originally implemented, except with an even shorter amount of time. In fact, people really like Erika. She's a fun, alternative way to play. However, by having the timer only on a challenge character, people have the choice of whether they want to play with it. Remember the playtester who didn't notice the timer before? Erika is her favorite character simply because it makes the game so much more difficult. The timer wasn't by itself unfun, what was bad about it was its purpose. It was designed purely to stop the player from "choosing to not have fun." If, from the beginning, we had sought to make the game more fun instead of to solve problems, we would have moved the timer away from the main game at least a year earlier.</p>
+
+<p>I hope you all stay aware of this solution mindset whenever you use it. Tune in next week for more information on how (and why) we ported from lua to a custom engine in C++.</p>
+
+<p>_________</p>
+
+<p>If you have any questions or comments, feel free to email us at hermanelectrogame@gmail.com. You can follow our progress and see more posts and gifs on our Twitter account, <a href="http://www.twitter.com/HermanElectro">@HermanElectro</a>.</p>
+
+</body>
+</html>
