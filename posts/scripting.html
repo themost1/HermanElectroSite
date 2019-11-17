@@ -4,7 +4,7 @@
 
 <head>
 <title>Herman Electro</title>
-<link href="../blogpost.css" type="text/css" rel="stylesheet">
+<link href="../blogpost.css?version=3.2" type="text/css" rel="stylesheet">
 <link rel="icon" href="../images/icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -48,9 +48,9 @@
 
 <body>
 
-<h1><center>SCRIPTING AND MODS</center></h1>
+<h1><center>WHY AND WHY NOT</center></h1>
 <h2>
-<center>Our experience implementing lua scripting and moddability</center>
+<center>Scripting Languages and Mod Support</center>
 <p><center>By Eli Goldin</p></center>
 </h2>
 
@@ -84,7 +84,6 @@ end
 function P.fog:obstructsVision()
 	return true
 end</code></pre></figure>
-</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 
 <p>This is a great asset for development. Not only can people who don't know C++ add new content, but it is also much easier for the more code-savvy C++ coders on the team to add whatever they want. However, this very fact is not without drawbacks. Because it is so easy for designers to add new content also means that it's easier for content to get added untested.</p>
 
@@ -104,14 +103,56 @@ end</code></pre></figure>
 
 <p>Because of my childhood love of modding, the idea of having our content be written in a scripting language and dynamically loaded got me very excited. Loading code from a scripting language like lua means that it is very easy for a player to see and modify that code. Thus, it would be easy for anyone to mod the game and do whatever they want. If I control this process, then I can make it so much easier than Minecraft's modding system. I can share my childhood joy of modding with anyone who plays <b>Herman Electro</b>.</p>
 
+<p>However, having all of our content-related code be visible is a drawback unto itself. Some of our team was worried that if people could see our lua code, they could reverse-engineer our engine and entirely recode the game themselves. This is a completely valid concern. For us, we decided that we personally value the openness afforded by allowing modding and were not particularly worried about trade secrets getting out. For others, this might not be a liberty that is reasonable to take.</p>
+
+</br>
+
+<p>In summary, we decided to have lua scripting because it made designing significantly easier and allowed players to mod the game themselves. This article doesn't even come close to giving a full pros and cons list, but I hope that I've helped you decide whether or not you should have scripting and mod support in your own game. In the end, I am probably a little biased because we did eventually decide to add mod support to <b>Herman Electro</b>. Thus, I would like to ask any readers out there who disagree, why else <i>shouldn't</i> games be moddable?</p>
+
+<p>_________</p>
+
 <p><i>A character designed by my little brother, Bob the Battery:</i></p>
 <figure>
 <img class="center-img" id="chart" src="../images/scripting/bob.gif" height=500 width=666>
 </figure>
 
-<p>However, having all of our content-related code be visible is a drawback unto itself. Some of our team was worried that if people could see our lua code, they could reverse-engineer our engine and entirely recode the game themselves. This is a completely valid concern. For us, we decided that we personally value the openness afforded by allowing modding and were not particularly worried about trade secrets getting out.</p>
+<p><i>Here's the code that makes Bob work:</i></p>
 
-<p>In summary, we decided to have lua scripting because it made designing significantly easier and allowed players to mod the game themselves. This article doesn't even come close to giving a full pros and cons list, but I hope that I've helped you decide whether or not you should have scripting and mod support in your own game. In the end, I am probably a little biased because we did eventually decide to add mod support to <b>Herman Electro</b>. Thus, I would like to ask any readers out there who disagree, why else <i>shouldn't</i> games be moddable?</p>
+<figure class="centered"><pre><code style=display:block;white-space:pre-wrap>local bob = character:new {
+	name = "Bob",
+	id = "bob",
+	powerMode = false,
+	info = "#02AA02SHIFT activated",
+	blacklisted = true
+}
+
+function bob:getImage()
+	if self.powerMode then
+		return "graphics/characters/BobPowered.png"
+	else
+		return "graphics/characters/Bob.png"
+	end
+end
+
+function bob:generatingPower()
+	if self.powerMode then return true end
+
+	return false
+
+end
+
+function bob:onKeyPressed(key)
+	if key=="shift" then
+		self.powerMode = not self.powerMode
+		Herman:getCurrentRoom():updateGameState()
+	end
+end
+
+function bob:needPowerUpdateOnMove()
+	if self.powerMode then return true end
+
+	return false
+end</code></pre></figure>
 
 <p>_________</p>
 
