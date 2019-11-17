@@ -131,6 +131,11 @@ img.mushroom:hover {
 	background: #ff5700; 
 }
 
+.centered {          
+  position:absolute;
+  left:15%;
+  font-size: 20;
+}
 
 .mc_embed_signup {
 	background: #000000;

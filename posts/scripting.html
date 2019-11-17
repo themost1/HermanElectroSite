@@ -1,0 +1,122 @@
+<html>
+
+<script src="../blogpost.js"></script>
+
+<head>
+<title>Herman Electro</title>
+<link href="../blogpost.css" type="text/css" rel="stylesheet">
+<link rel="icon" href="../images/icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<!-- uses stylesheet above, so needs to be called topnav -->
+<div class="topnav">
+	<span class="topnav right">
+		<a href="https://www.reddit.com/r/HermanElectro/" class="fa fa-reddit fa-5x"a>
+		<a href="https://twitter.com/HermanElectro" class="fa fa-twitter fa-2x"></a>
+		<a href="https://www.facebook.com/Herman-Electro-213679162478806/" class="fa fa-facebook fa-3x"></a>
+		<img id="mushroom" class="mushroom" src="../images/mushroom.png">
+	</span>
+	
+	<div class="dropdown">
+		<button class="dropbtn" onclick="window.location.href = '../index.html';">Home</button>
+	</div>
+
+	<div class="dropdown">
+		<button class="dropbtn" onclick="window.location.href = '../posts.html';">Posts 
+		<!-- <i class="fa fa-caret-down"></i> -->
+		</button>
+	
+		<!-- this is how dropdowns should be created
+		<div class="dropdown-content">
+		  <a href="#">All Posts</a>
+		  <a href="#">Latest Post</a>
+		</div>
+		-->
+	</div>
+
+	<div class="dropdown">
+		<button class="dropbtn" onclick="window.location.href = '../index.html';">Download (Coming Soon)</button>
+	</div>
+	
+	<div class="dropdown">
+		<button class="dropbtn" onclick="location.href = 'mailto:hermanelectro@gmail.com';">Contact</button>
+	</div>
+</div>
+
+<br/><br/><br/>
+
+<body>
+
+<h1><center>SCRIPTING AND MODS</center></h1>
+<h2>
+<center>Our experience implementing lua scripting and moddability</center>
+<p><center>By Eli Goldin</p></center>
+</h2>
+
+<br/>
+
+<p>As Ben talked about last week, <b>Herman Electro</b> underwent a major transition from Lua Love to C++. We deleted all of our code, and rewrote the entire engine from scratch. But there was a problem. One member of our team, who did know lua, did not know C++. On some level, this was ok. She could still design tiles, tools, and characters. Now, however, it would be up to Ben and I to program them.</p>
+
+<p>However, there was an easy solution to this problem. She could write all the code for tools in lua, and then we'd translate it to C++ automatically. Upon a little bit of research, we found LuaBridge. Even better than translating, we could run lua code directly from C++ itself. To me, this seemed great. However, this immediately sparked a huge debate on our slack.</p>
+
+<p>"If we are just going to have tiles coded in lua, why are we even using C++ in the first place?"</p>
+<p>"If stuff is coded in lua, anybody can read it. We don't want people to know everything about how our game works!"</p>
+<p>"Won't it be super slow to run lua from C++?"</p>
+<p>"Will it really save time to implement this? Us translating designs to C++ isn't <i>that</i> slow."</p>
+
+<p>In the end, however, we did decide to add lua scripting to the game. Today, I will be going through the reasons why, and you'll get to see a tiny bit of how our scripting engine works. However, I don't necessarily think that a scripting is a good idea for everyone. I will also go through many of the reasons you wouldn't want to use it, and I'll discuss why we ignored these.</p>
+
+</br><p><b>Smoother Design to Practice Pipeline</b></p>
+
+<img class="center-img" id="chart" src="../images/scripting/fog.gif" height=500 width=666>
+
+<p>As descibed above, one of the best reasons to have key mechanics written in a scripting language instead of hardcoded is that it is easier for pure designers to change how the game works. In systems, like Unity, where it is easy for designers to add content, this is not super important. However, since we had just recently written our own engine which didn't have these benefits, we needed to make up for our lack somehow. Using lua, it is now incredibly easy for anyone on the team to make a new tile. To add fog (a tile you can walk through but can't see through), all that you need to do is add the following code to a file in our lua folder.</p>
+<figure class="centered"><pre><code style=display:block;white-space:pre-wrap>P.fog = P.tile:new {
+	name = "Fog",
+	id = "fog",
+	flagged = true
+}
+function P.fog:updateSprite()
+	self.image = "graphics/tiles/fog.png"
+end
+
+function P.fog:obstructsVision()
+	return true
+end</code></pre></figure>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+
+<p>This is a great asset for development. Not only can people who don't know C++ add new content, but it is also much easier for the more code-savvy C++ coders on the team to add whatever they want. However, this very fact is not without drawbacks. Because it is so easy for designers to add new content also means that it's easier for content to get added untested.</p>
+
+<p>There was a period of time when the design team was testing a bunch of playable characters. In doing so, a whole bunch of new character files were added to lua. We figured that as long as there was no way to play with the characters, it would be ok for us to add these test characters to the master branch. At one point, there were around 30 test characters sitting in lua. Then, one day, we were showing off the game at a playtesting event (Playcrafting NYC's Halloween Expo). One of our playtesters decided to play as our random character, who for some unknown reason we hadn't tested in a while. Immediately, this playtester went into action as our "Rammy" test character, who was unbelievably overpowered. Rammy could quite literally walk through walls, and so this playtester pretty much immediately beat the game and walked away very confused at why we would add something so broken.</p>
+
+<img class="center-img" id="chart" src="../images/scripting/rammy.gif" height=500 width=666>
+
+<p>Obviously, at this point we realized our mistake. However, we had gone so overboard on adding new characters that we needed to manually disable each and every one from being accessed by the random character selector. Now, obviously it's never good to let untested features into the main game, but even with safeguards, having all content be scripted increases that risk a little.</p>
+
+<p>While it may seem a little silly to worry about making work easier, this is still a valid concern. If programmers aren't vetting each new addition, it is very likely that changes may conflict with already existing systems in some unforeseen way. However, as the <b>Herman Electro</b> team is small enough that everybody on the team can look at every change, this was not a huge issue for us.</p>
+
+</br><p><b>Modding and Open Source</b></p>
+
+<p>The reason I first learned programming as a kid was because I wanted to make games. Around this time, Minecraft came out. I was enthralled with the game, and would play it all the time with my friends. At some point, my friend showed me a "mod", or modification, that made it so you could make diamonds out of dirt. I was excited about getting diamonds of course, but I was also intrigued. Somebody who didn't make the game could still change its design? I started doing research, and eventually learned how to mod Minecraft myself. After a lot of struggling, I eventually figured out how to make a zombie that was twice as big!</p>
+
+<p>Minecraft (at that time at least) was not a very easy thing to mod. It took me, a middle schooler who had just learned Java, around a month just to learn how to change the models. The source code was obfuscated and in Java, and the only way to modify it was to download third party programs to hack the game. However, I will never forget my excitement when I finally got it to work. I immediately showed it to all of my friends, who were not all that impressed. However, modding Minecraft let childhood me experience my favorite part of game design. I got to see my friends interacting with something <i>I</i> made.</p>
+
+<p>Because of my childhood love of modding, the idea of having our content be written in a scripting language and dynamically loaded got me very excited. Loading code from a scripting language like lua means that it is very easy for a player to see and modify that code. Thus, it would be easy for anyone to mod the game and do whatever they want. If I control this process, then I can make it so much easier than Minecraft's modding system. I can share my childhood joy of modding with anyone who plays <b>Herman Electro</b>.</p>
+
+<p><i>A character designed by my little brother, Bob the Battery:</i></p>
+<figure>
+<img class="center-img" id="chart" src="../images/scripting/bob.gif" height=500 width=666>
+</figure>
+
+<p>However, having all of our content-related code be visible is a drawback unto itself. Some of our team was worried that if people could see our lua code, they could reverse-engineer our engine and entirely recode the game themselves. This is a completely valid concern. For us, we decided that we personally value the openness afforded by allowing modding and were not particularly worried about trade secrets getting out.</p>
+
+<p>In summary, we decided to have lua scripting because it made designing significantly easier and allowed players to mod the game themselves. This article doesn't even come close to giving a full pros and cons list, but I hope that I've helped you decide whether or not you should have scripting and mod support in your own game. In the end, I am probably a little biased because we did eventually decide to add mod support to <b>Herman Electro</b>. Thus, I would like to ask any readers out there who disagree, why else <i>shouldn't</i> games be moddable?</p>
+
+<p>_________</p>
+
+<p> Thanks for reading the column! If you have any questions or comments, feel free to email us at hermanelectrogame@gmail.com. You can follow our progress and see more posts and gifs on our Twitter account, <a href="http://www.twitter.com/HermanElectro">@HermanElectro</a>.</p>
+
+</body>
+
+</html>
