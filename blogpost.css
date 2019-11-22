@@ -13,6 +13,12 @@ p {
 	font-size: 24;
 }
 
+.img-caption {
+	font-size: 20;
+	font-style: italic;
+	text-align:center;
+}
+
 img.banner {
 	max-width: 80%;
 	height: auto;
