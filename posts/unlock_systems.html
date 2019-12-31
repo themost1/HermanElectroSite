@@ -1,0 +1,147 @@
+<html>
+
+<script src="../blogpost.js"></script>
+
+<head>
+<title>Herman Electro</title>
+<link href="../blogpost.css" type="text/css" rel="stylesheet">
+<link rel="icon" href="../images/icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<!-- uses stylesheet above, so needs to be called topnav -->
+<div class="topnav">
+	<span class="topnav right">
+		<a href="https://www.reddit.com/r/HermanElectro/" class="fa fa-reddit fa-5x"a>
+		<a href="https://twitter.com/HermanElectro" class="fa fa-twitter fa-2x"></a>
+		<a href="https://www.facebook.com/Herman-Electro-213679162478806/" class="fa fa-facebook fa-3x"></a>
+		<img id="mushroom" class="mushroom" src="../images/mushroom.png">
+	</span>
+	
+	<div class="dropdown">
+		<button class="dropbtn" onclick="window.location.href = '../index.html';">Home</button>
+	</div>
+
+	<div class="dropdown">
+		<button class="dropbtn" onclick="window.location.href = '../posts.html';">Posts 
+		<!-- <i class="fa fa-caret-down"></i> -->
+		</button>
+	
+		<!-- this is how dropdowns should be created
+		<div class="dropdown-content">
+		  <a href="#">All Posts</a>
+		  <a href="#">Latest Post</a>
+		</div>
+		-->
+	</div>
+
+	<div class="dropdown">
+		<button class="dropbtn" onclick="window.location.href = '../index.html';">Download (Coming Soon)</button>
+	</div>
+	
+	<div class="dropdown">
+		<button class="dropbtn" onclick="location.href = 'mailto:hermanelectro@gmail.com';">Contact</button>
+	</div>
+</div>
+
+<br/><br/><br/>
+
+<body>
+
+<h1><center>CHASING PROGRESS</center></h1>
+<h2>
+<center>How Different Unlock Systems Motivate Players</center>
+<p><center>By Benjamin Most</p></center>
+</h2>
+
+<br/>
+
+<p><b>Why Unlocks Matter</b></p>
+
+<p>Some of the most memorable moments in gaming come hand-in-hand with unlocking new content.</p>
+
+<p>When I look back on the most exciting moments in my personal gaming history -- defeating a difficult boss after hours, or solving a challenging puzzle at the end of a level, or reaching a new area of a map to explore -- all of these moments were associated, in one way or another, with an unlock.</p>
+
+<p>Unlocks can come in many forms, from explicitly rewarding the player with achievements to opening new areas of the map or introducing new gameplay elements. They can give the player new abilities, cosmetics, or just a small self-esteem boost. But unlocks almost universally share their ability to motivate the player, either to continue playing until achieving an unlock or to play after achieving an unlock in order to explore new content.</p>
+
+<p>I&rsquo;m using the word &ldquo;unlock&rdquo; liberally here to refer to any sort of new content provided during the game. A player could unlock new in-game items, as in <i>The Binding of Isaac</i> or <i>Spelunky</i>; or a new set of levels, as in <i>Angry Birds</i> or <i>Super Mario Bros.</i>; or a new outfit for a character, as in online multiplayer games such as <i>League of Legends</i> or <i>Fortnite</i>.</p>
+
+<img class="center-img" id="chart" src="../images/unlock_systems/column_unlock.png" width=500 height=300>
+
+
+<p>_________________________</p>
+
+<p><b>The Elements of an Unlock</b></p>
+
+<p>In <b>Herman Electro</b>, there are a variety of content types gated behind unlocks. New characters, items, puzzle elements, and other miscellaneous content are all tied to unlocks. In order to figure out how to organize an unlock system to slowly roll out all of this content, I had to take a closer look at the underlying attributes that define an unlock system.</p>
+
+<p>We can define unlock systems by a few attributes, listed below.</p>
+
+<p>Required effort: Some unlocks come naturally, without requiring the player to go out of his or her way to perform a specific action. Other unlocks can only be achieved by performing specific actions outside the normal range of the player&rsquo;s behavior. While natural unlocks guarantee a constant sense of progression, unlocks that require specific actions can encourage the player to explore new elements of the game.</p>
+
+<p>Resources invested: Unlocks may require varying amounts of resources, such as 	in-game currency. By requiring that players spend resources, unlocks can appear more valuable and reflect the work that the player put into earning those resources. However, the tradeoff of spending resources to gain something new can frustrate players or make them save their resources instead of spending them, since they had to put time and effort into earning in-game currency and are reluctant to spend it.</p>
+
+<img class="center-img" src="../images/unlock_systems/coins.png" height=200 width=400>
+
+<p>Progress clarity: An unlock system can clearly show the player how close he or she is to achieving an unlock, or it can hide this information from the player. The first system motivates the player to keep playing until the next unlock, especially if the soon-to-be-unlocked content looks exciting. The second system gives the player a fun surprise every once in a while, and the random nature of the unlocks can motivate the player, since a new unlock could be earned at any time. (In the first system, a player might be reluctant to play immediately after achieving an unlock, if it is clear the next unlock requires a large time investment.)</p>
+
+<p>Gameplay impact: Unlocks like character skins or items that spawn infrequently will not have much impact on the game. However, more frequently-appearing content, such as a new enemy type, can change the gameplay enormously.</p>
+
+<p>_________________________</p>
+
+<p><b>What is the Best System?</b></p>
+
+<p>When designing the unlock systems of <b>Herman Electro</b>, we initially hoped to figure out the optimal settings for each of the attributes above. Is a series of naturally-occuring, progress-denoting unlocks ideal? Or maybe unlocks that require specific, difficult-to-achieve actions that are not explained to the player beyond a vague description?</p>
+
+<video class="center-img" height=500 width=800 controls>
+	<source src="../images/unlock_systems/xp_bar.mp4" type=video/mp4>
+</video>
+
+<p class="img-caption">One thing was clear: the days of our XP bar were numbered.</p>
+
+<p>After testing out a variety of unlock systems, we realized something important: there is no single ideal unlock system, because the attributes above aren&rsquo;t clearly good or bad, but rather give different benefits depending on how they are used. For example, an unlock system that clearly shows progress toward the next unlock motivates players who are close to a new unlock, but an unlock system that does not show progress can also motivate players since they know that a new unlock could occur at any time.</p>
+
+<p>To reap the benefits of the above attributes as much as possible, we decided to build the unlock progression of Herman Electro around multiple unlock systems that behave in different ways, each of which serves to uniquely motivate the player.</p>
+
+<p>_________________________</p>
+
+<p><b>The Multiple-Solution Solution</b></p>
+
+<p>The unlock systems of Herman Electro work together to motivate the player from multiple angles at once.</p>
+
+<p>New tools, our version of in-game items, are unlocked through the &ldquo;meta-shop.&rdquo; The player finds pieces of scrap metal throughout the game that can be spent in the meta-shop to unlock new tools. The meta-shop displays how many pieces of scrap metal are required for the next tool unlock, as well as what that unlock will be, which motivates the player to find more scrap metal and also emphasizes the importance of the unlock by costing an in-game resource.</p>
+
+<p>In addition, the player can actually use their newly unlocked tool as soon as they unlock it, since it is added to their inventory. By allowing the player to test out the new tool, he or she has an added incentive to keep playing after the unlock.</p>
+
+<video class="center-img" height=500 width=800 controls>
+	<source src="../images/unlock_systems/metashop.mp4" type=video/mp4>
+</video>
+
+<p>Many of the core tiles used in puzzles throughout the game unlock gradually over time without requiring much effort from the player. These tile unlocks feel as if they occur randomly after the player beats a room, although under the hood, they are actually tied to special rooms that teach important concepts in the game and reinforce the player&rsquo;s learning. These tutorial rooms are not marked as being tied to unlocks, or as having any special status to separate them from any other rooms, so the player is usually surprised and excited to get a tile unlock.</p>
+
+<video class="center-img" height=500 width=800 controls>
+	<source src="../images/unlock_systems/tileUnlock.mp4" type=video/mp4>
+</video>
+
+<p>Some unlocks are task-based, requiring the player to perform specific actions to achieve them. For example, winning as each character unlocks a new tile or other content element. Other task-based unlocks are tied to secrets that only the most dedicated players would uncover, and they reward the player with secret content that I won&rsquo;t spoil here.</p>
+
+<video class="center-img" height=500 width=800 controls>
+	<source src="../images/unlock_systems/oldManUnlock.mp4" type=video/mp4>
+</video>
+
+<p>All of these unlock systems work in tandem to keep the player invested and aiming to unlock new content.</p>
+
+<p>_________________________</p>
+
+<p><b>In Conclusion</b></p>
+
+<p>The hybrid unlock system model has worked well in Herman Electro. In general, it is always a good idea to consider how a given unlock system might motivate the player. The psychology behind unlocks -- giving players a reward for good play, then promising another reward if they continue to play more -- isn&rsquo;t terribly complicated, but it is immensely powerful as a motivational tool and as a way to make the gameplay experience more exciting by frequently introducing new content.</p>
+
+<p>Thanks for reading the column! If you have any questions or comments, feel free to email us at hermanelectrogame@gmail.com. You can follow our progress and see more posts and gifs on our Twitter account, <a href="http://www.twitter.com/HermanElectro">@HermanElectro.</a></p></p>
+
+<p> </p>
+
+
+</body>
+
+</html>
