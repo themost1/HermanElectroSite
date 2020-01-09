@@ -1,6 +1,24 @@
+syncBannerLoc = function() {
+	/*var img = document.getElementById("banner");
+
+    var bodyHeight  = parseInt(getComputedStyle(document.body).height, 10) * 2;
+    var scrollLimit = bodyHeight - window.innerHeight;
+    var scrollTop   = document.body.scrollTop;
+    var scrollPCT   = (scrollTop / (scrollLimit/100)) / 100;
+	var offsetHeight = 50;
+    img.style.top   = bodyHeight * scrollPCT - offsetHeight + "px";*/
+	var img = document.getElementById("banner");
+	var scrollTop   = document.body.scrollTop;
+	img.style.top = scrollTop/2;
+}
 
 window.onload = function() {
 	document.getElementById("mushroom").onclick = function() {mushroomMode()};
+}
+
+window.onscroll = function() {
+	var img = document.getElementById("banner");
+	syncBannerLoc();
 }
 
 var colorMarker = 0;
