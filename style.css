@@ -3,6 +3,9 @@
 body {
 	background-color: rgb(23, 15, 23);
 	color: orange;
+	background-image: url('images/roomBackground.png');
+	background-size: 100% auto;
+	background-repeat: no-repeat;
 }
 
 img.banner {
