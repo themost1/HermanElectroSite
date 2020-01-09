@@ -84,6 +84,18 @@ img.banner {
     color: #ff9000;
 }
 
+.bigtext {
+    text-align: center;
+    color: #ff9000;
+	font-size: 40px;
+}
+
+.smalltext {
+    text-align: center;
+    color: #ffffff;
+	font-size: 22px;
+}
+
 /* Style all font awesome icons */
 .fa {
     padding: 20px;
